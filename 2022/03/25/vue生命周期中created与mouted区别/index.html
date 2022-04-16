@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Vue生命周期中created()与mounted()区别 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、生命周期的概念vue中实例或者组件从创建到销毁组件所经历的一系列过程 即从创建、初始化数据、编译模板、挂载DOM&#x3D;&gt;渲染、更新&#x3D;&gt;渲染、卸载等一系列过程 注意：在 Vue 生命周期钩子会自动绑定this上下文到实例中，因此我们可以访问数据，对Property和方法进行运算，但也意味着我们不能使用箭头函数来定义一个生命周期方法。 二、生命周期的具体内容Vue生命周">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue生命周期中created()与mounted()区别">
+<meta property="og:url" content="http://example.com/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、生命周期的概念vue中实例或者组件从创建到销毁组件所经历的一系列过程 即从创建、初始化数据、编译模板、挂载DOM&#x3D;&gt;渲染、更新&#x3D;&gt;渲染、卸载等一系列过程 注意：在 Vue 生命周期钩子会自动绑定this上下文到实例中，因此我们可以访问数据，对Property和方法进行运算，但也意味着我们不能使用箭头函数来定义一个生命周期方法。 二、生命周期的具体内容Vue生命周">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/uBQOoySN6pqIlhs.png">
+<meta property="article:published_time" content="2022-03-25T05:55:55.000Z">
+<meta property="article:modified_time" content="2022-03-25T06:36:31.455Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/25/uBQOoySN6pqIlhs.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vue生命周期中created与mouted区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2022-03-25T05:55:55.000Z" itemprop="datePublished">2022-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Vue生命周期中created()与mounted()区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、生命周期的概念"><a href="#一、生命周期的概念" class="headerlink" title="一、生命周期的概念"></a>一、生命周期的概念</h2><p>vue中实例或者组件从创建到销毁组件所经历的一系列过程</p>
+<p>即从创建、初始化数据、编译模板、挂载DOM&#x3D;&gt;渲染、更新&#x3D;&gt;渲染、卸载等一系列过程</p>
+<p>注意：在 Vue 生命周期钩子会自动绑定this上下文到实例中，因此我们可以访问数据，对Property和方法进行运算，但也意味着我们不能使用箭头函数来定义一个生命周期方法。</p>
+<h2 id="二、生命周期的具体内容"><a href="#二、生命周期的具体内容" class="headerlink" title="二、生命周期的具体内容"></a>二、生命周期的具体内容</h2><p>Vue生命周期具体可以分为八个阶段：创建前后，载入前后，更新前后，销毁前后，同时还包括一些特殊场景的生命周期。</p>
+<p>生命周期流程图如下：</p>
+<img src="https://s2.loli.net/2022/03/25/uBQOoySN6pqIlhs.png" alt="vue生命周期.jpg" style="zoom:50%;" />
+
+<h2 id="三、created与mounted区别"><a href="#三、created与mounted区别" class="headerlink" title="三、created与mounted区别"></a>三、created与mounted区别</h2><p>从上图中我们可以看到：</p>
+<p>created：在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图，此时DOM节点尚未形成；</p>
+<p>mounted：在模板渲染成html后调用，通常初始化页面完成后，再对DOM节点进行操作。</p>
+<p>二者都能调用实例对象的属性和方法，由于mounted期间DOM节点已经形成，因此数据请求放在mounted中可能会导致页面闪动，但若能在页面加载完成之前完成则不会出现这种情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" data-id="cl21g5z4x00074ow284cse2xe" data-title="Vue生命周期中created()与mounted()区别" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue中如何解决跨域问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/25/vue%E4%B8%AD%E7%9A%84$nextTick%E7%9A%84%E4%BD%9C%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue中的$nextTick的作用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/">this对象</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/">元素水平垂直居中的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/">var、let、const区别</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">vue中如何解决跨域问题</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/">Vue生命周期中created()与mounted()区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JavaScript中精度丢失的问题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1、问题引入对于JavaScript中臭名昭著的bug： 1对于0.1+0.2&#x3D;&#x3D;&#x3D;0.3   &#x2F;&#x2F;false 这其实是JS精度丢失产生的问题 2、分析原因浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的doubl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中精度丢失的问题">
+<meta property="og:url" content="http://example.com/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、问题引入对于JavaScript中臭名昭著的bug： 1对于0.1+0.2&#x3D;&#x3D;&#x3D;0.3   &#x2F;&#x2F;false 这其实是JS精度丢失产生的问题 2、分析原因浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的doubl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-21T06:06:00.000Z">
+<meta property="article:modified_time" content="2022-03-21T07:14:49.150Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript中精度丢失的问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-03-21T06:06:00.000Z" itemprop="datePublished">2022-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JavaScript中精度丢失的问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1、问题引入"><a href="#1、问题引入" class="headerlink" title="1、问题引入"></a>1、问题引入</h2><p>对于JavaScript中臭名昭著的bug：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>这其实是JS精度丢失产生的问题</p>
+<h2 id="2、分析原因"><a href="#2、分析原因" class="headerlink" title="2、分析原因"></a>2、分析原因</h2><p>浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的double双精度浮点数。</p>
+<p>0.1的二进制表示的是一个无线循环小数，所以无法存储在内存中，因此上述浮点数标准需要对这种无限循环的二进制进行截取，截取之后0.1变成了0.100…001，0.2变成了0.200…002，导致0.1+0.2&gt;0.3，最后输出false。</p>
+<h2 id="3、深入分析"><a href="#3、深入分析" class="headerlink" title="3、深入分析"></a>3、深入分析</h2><p>前面提到，Number采用的是IEEE754规范中64位双精度浮点数编码，长度为8个字节，64位，64位又可分为三个部分：</p>
+<ul>
+<li>符号位：第一位sign（0为正数，1为负数）</li>
+<li>指数位：1~12位，表示次数方，可以为正负数</li>
+<li>尾数位：最后的52位数</li>
+</ul>
+<p>例如：<br> 27.5转换为二进制11011.1,转换为科学计数法：1.10111 * 2^4,<br> 符号位为1；指数位为4+，即1027；尾数位位10111，补够52位即可。</p>
+<h2 id="4、解决方案"><a href="#4、解决方案" class="headerlink" title="4、解决方案"></a>4、解决方案</h2><p> 理论上我们很难利用有限的空间来存储无限的小数，但我们可以对数据进行处理，得到我们期望的结果。当我们拿到1.4000000000000001这样的浮点数时，可以采用toPrecision()方法凑整，在通过parseFloat转化成数字再显示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">strip</span>(<span class="params">num,precision=<span class="number">12</span></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> +(<span class="built_in">parseFloat</span>(num.<span class="title function_">toPrecision</span>(precision)));</span><br></pre></td></tr></table></figure>
+
+<p>对于运算类，可以将小数转换成整数再运算：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 精确加法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> num1Digits = (num1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> num2Digits = (num2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> baseNum = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(num1Digits, num2Digits));</span><br><span class="line">  <span class="keyword">return</span> (num1 * baseNum + num2 * baseNum) / baseNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="cl21g5z4k00004ow2f71y9vdc" data-title="JavaScript中精度丢失的问题" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/21/BFC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BFC
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/">this对象</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/">元素水平垂直居中的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/">var、let、const区别</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">vue中如何解决跨域问题</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/">Vue生命周期中created()与mounted()区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

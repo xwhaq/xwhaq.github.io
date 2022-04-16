@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vue中如何解决跨域问题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、跨域的概念跨域本质上是浏览器基于同源策略的一种安全手段 同源策略，是一种约定，是浏览器最核心也最基本的安全性能，可以说Web是建立在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本与另一个域的内容进行交互。 同源即满足以下条件：  协议相同 主机相同 端口相同  反之，非同源请求，也就是协议、端口、主机其中一项不相同的时候，就会产生跨域 非同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue中如何解决跨域问题">
+<meta property="og:url" content="http://example.com/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、跨域的概念跨域本质上是浏览器基于同源策略的一种安全手段 同源策略，是一种约定，是浏览器最核心也最基本的安全性能，可以说Web是建立在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本与另一个域的内容进行交互。 同源即满足以下条件：  协议相同 主机相同 端口相同  反之，非同源请求，也就是协议、端口、主机其中一项不相同的时候，就会产生跨域 非同">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-25T06:40:22.000Z">
+<meta property="article:modified_time" content="2022-03-25T07:32:42.963Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vue中如何解决跨域问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-03-25T06:40:22.000Z" itemprop="datePublished">2022-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vue中如何解决跨域问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、跨域的概念"><a href="#一、跨域的概念" class="headerlink" title="一、跨域的概念"></a>一、跨域的概念</h2><p>跨域本质上是浏览器基于同源策略的一种安全手段</p>
+<p>同源策略，是一种约定，是浏览器最核心也最基本的安全性能，可以说Web是建立在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本与另一个域的内容进行交互。</p>
+<p>同源即满足以下条件：</p>
+<ul>
+<li>协议相同</li>
+<li>主机相同</li>
+<li>端口相同</li>
+</ul>
+<p>反之，非同源请求，也就是协议、端口、主机其中一项不相同的时候，就会产生跨域</p>
+<p>非同源的限制有：</p>
+<ul>
+<li>无法读取非同源网页的Cookie、LocalStroage、和IndexedDB</li>
+<li>无法接触非同源网页的DOM</li>
+<li>无法向非同源地址发送AJAX请求</li>
+</ul>
+<p>注意：跨域是浏览器的限制（我们使用抓包工具抓取接口工具时，可以看到数据已经返回，但由于浏览器的限制，我们无法获取数据；我们使用postman请求接口可以请求到数据）</p>
+<h2 id="二、跨域的解决方案"><a href="#二、跨域的解决方案" class="headerlink" title="二、跨域的解决方案"></a>二、跨域的解决方案</h2><h3 id="1-CORS"><a href="#1-CORS" class="headerlink" title="1. CORS"></a>1. CORS</h3><p>CORS （跨域资源共享）是一个系统，有一系列传输的HTTP头组成，这些HTTP头决定浏览器是否组织前端JavaScript代码获取跨域请求的响应</p>
+<p>CORS实现起来比较方便，值需要增加一些HTTP头，让服务器能声明允许的访问来源，只要后端实现了 CORS ，就实现了跨域。</p>
+<h3 id="2-Proxy"><a href="#2-Proxy" class="headerlink" title="2. Proxy"></a>2. Proxy</h3><p>代理 （Proxy）也称网络代理，一种特殊的网络服务，允许一个网络终端与另一个网络终端进行非直接的连接。</p>
+<p>一些网关、路由器等网络设备具备网络代理功能。</p>
+<p>一般认为代理服务有利于保障网络终端的隐私与安全，放置攻击。</p>
+<p>实现方式：</p>
+<ul>
+<li>通过修改nginx服务器配置实现代理转发</li>
+<li>前端修改，后端不用</li>
+</ul>
+<p>前端请求 a 地址，设置nginx服务，将 a 地址代理到 b 地址</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>, <span class="comment">//主机地址</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&#x27;8000&#x27;</span>, <span class="comment">//端口</span></span><br><span class="line">    	<span class="attr">proxy</span>:&#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>:&#123;</span><br><span class="line">                <span class="attr">target</span>: <span class="string">&#x27;xxxxxxxx&#x27;</span>, <span class="comment">//真实地址</span></span><br><span class="line">                <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">                pathRewrite； &#123;</span><br><span class="line">                    <span class="string">&#x27;/api&#x27;</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-JSONP（动态创建script标签）"><a href="#3-JSONP（动态创建script标签）" class="headerlink" title="3.  JSONP（动态创建script标签）"></a>3.  JSONP（动态创建script标签）</h3><ul>
+<li>JSONP跨域-前端适配，后端配合</li>
+<li>前后端同时改造</li>
+</ul>
+<p>jsonp原理：img、script、link标签的src或href属性不受同源策略影响，可以用，来作为请求，后端接受请求后返回一个回调函数callback，调用前端已经定义好的函数，从而实现跨域请求</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> frame = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">	frame.<span class="property">src</span> = <span class="string">&#x27;http://localhost:3000/article-listname=leo&amp;age=30&amp;callback=func&#x27;</span>;</span><br><span class="line">	$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">append</span>(frame);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 此为回调函数，其中res为后端返回的数据</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">res</span>)&#123;</span><br><span class="line">	<span class="title function_">alert</span>(res.<span class="property">message</span>+res.<span class="property">name</span>+<span class="string">&#x27;你已经&#x27;</span>+res.<span class="property">age</span>+<span class="string">&#x27;岁了&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" data-id="cl21g5z4x00064ow2cxht04id" data-title="vue中如何解决跨域问题" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          var、let、const区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue生命周期中created()与mounted()区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/">this对象</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/">元素水平垂直居中的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/">var、let、const区别</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">vue中如何解决跨域问题</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/">Vue生命周期中created()与mounted()区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
