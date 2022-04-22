@@ -16,7 +16,7 @@
 <meta property="og:description" content="1、问题引入对于JavaScript中臭名昭著的bug： 1对于0.1+0.2&#x3D;&#x3D;&#x3D;0.3   &#x2F;&#x2F;false 这其实是JS精度丢失产生的问题 2、分析原因浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的doubl">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-21T06:06:00.000Z">
-<meta property="article:modified_time" content="2022-03-21T07:14:49.150Z">
+<meta property="article:modified_time" content="2022-04-22T06:35:18.635Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -154,7 +160,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript中精度丢失的问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript中精度丢失的问题"
+  class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -165,16 +172,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+          
+            <a href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
   	<time datetime="2022-03-21T06:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、问题引入"><a href="#1、问题引入" class="headerlink" title="1、问题引入"></a>1、问题引入</h2><p>对于JavaScript中臭名昭著的bug：</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="1、问题引入"><a href="#1、问题引入" class="headerlink" title="1、问题引入"></a>1、问题引入</h2><p>对于JavaScript中臭名昭著的bug：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 <p>这其实是JS精度丢失产生的问题</p>
 <h2 id="2、分析原因"><a href="#2、分析原因" class="headerlink" title="2、分析原因"></a>2、分析原因</h2><p>浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的double双精度浮点数。</p>
@@ -191,45 +200,30 @@
 
 <p>对于运算类，可以将小数转换成整数再运算：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 精确加法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> num1Digits = (num1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> num2Digits = (num2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> baseNum = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(num1Digits, num2Digits));</span><br><span class="line">  <span class="keyword">return</span> (num1 * baseNum + num2 * baseNum) / baseNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+                        
+                          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
+                  
+
+                      
+                        
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -279,29 +273,34 @@
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
   
 <nav id="article-nav">
   
-    <a href="/2022/03/21/BFC/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/03/22/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          BFC
+          Vue组件间通信方式
         
       </div>
     </a>
   
   
+    <a href="/2022/02/24/BFC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">BFC</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
 </nav>
 
-
-<aside class="wrap-side-operation">
+    
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -318,18 +317,17 @@
 </aside>
 
 
+        
+          
 
-  
-  
-  
+                
 
-  
+                      
 
-  
+                            
 
-  
-
-
+                                
+                                      
           </div>
         </div>
       </div>

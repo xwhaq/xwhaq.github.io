@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/03/25/uBQOoySN6pqIlhs.png">
 <meta property="article:published_time" content="2022-03-25T05:55:55.000Z">
-<meta property="article:modified_time" content="2022-03-25T06:36:31.455Z">
+<meta property="article:modified_time" content="2022-04-22T06:36:26.459Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2022/03/25/uBQOoySN6pqIlhs.png">
@@ -62,6 +62,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -156,7 +162,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue生命周期中created与mouted区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vue生命周期中created与mouted区别"
+  class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -167,16 +174,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+          
+            <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" class="archive-article-date">
   	<time datetime="2022-03-25T05:55:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、生命周期的概念"><a href="#一、生命周期的概念" class="headerlink" title="一、生命周期的概念"></a>一、生命周期的概念</h2><p>vue中实例或者组件从创建到销毁组件所经历的一系列过程</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、生命周期的概念"><a href="#一、生命周期的概念" class="headerlink" title="一、生命周期的概念"></a>一、生命周期的概念</h2><p>vue中实例或者组件从创建到销毁组件所经历的一系列过程</p>
 <p>即从创建、初始化数据、编译模板、挂载DOM&#x3D;&gt;渲染、更新&#x3D;&gt;渲染、卸载等一系列过程</p>
 <p>注意：在 Vue 生命周期钩子会自动绑定this上下文到实例中，因此我们可以访问数据，对Property和方法进行运算，但也意味着我们不能使用箭头函数来定义一个生命周期方法。</p>
 <h2 id="二、生命周期的具体内容"><a href="#二、生命周期的具体内容" class="headerlink" title="二、生命周期的具体内容"></a>二、生命周期的具体内容</h2><p>Vue生命周期具体可以分为八个阶段：创建前后，载入前后，更新前后，销毁前后，同时还包括一些特殊场景的生命周期。</p>
@@ -188,45 +197,30 @@
 <p>mounted：在模板渲染成html后调用，通常初始化页面完成后，再对DOM节点进行操作。</p>
 <p>二者都能调用实例对象的属性和方法，由于mounted期间DOM节点已经形成，因此数据请求放在mounted中可能会导致页面闪动，但若能在页面加载完成之前完成则不会出现这种情况。</p>
 
-      
+                        
+                          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
+                  
+
+                      
+                        
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -276,9 +270,9 @@
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
@@ -302,8 +296,8 @@
   
 </nav>
 
-
-<aside class="wrap-side-operation">
+    
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -320,18 +314,17 @@
 </aside>
 
 
+        
+          
 
-  
-  
-  
+                
 
-  
+                      
 
-  
+                            
 
-  
-
-
+                                
+                                      
           </div>
         </div>
       </div>

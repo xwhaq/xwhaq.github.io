@@ -57,6 +57,8 @@
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,7 +158,8 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-this对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-this对象"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -163,16 +170,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
+          
+            <a href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
   	<time datetime="2022-03-26T07:42:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-26</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>this关键字说函数运行时自动生成的一个内部对象，只能在函数内部使用，总是指向调用它的对象。</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>this关键字说函数运行时自动生成的一个内部对象，只能在函数内部使用，总是指向调用它的对象。</p>
 <p>同时this在函数执行过程中，this一旦被确定了，就不可再更改。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">baz</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 当前调用栈是：baz</span></span><br><span class="line">    <span class="comment">// 因此，当前调用位置是全局作用域</span></span><br><span class="line">    </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="string">&quot;baz&quot;</span> );</span><br><span class="line">    <span class="title function_">bar</span>(); <span class="comment">// &lt;-- bar的调用位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">bar</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 当前调用栈是：baz --&gt; bar</span></span><br><span class="line">    <span class="comment">// 因此，当前调用位置在baz中</span></span><br><span class="line">    </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="string">&quot;bar&quot;</span> );</span><br><span class="line">    <span class="title function_">foo</span>(); <span class="comment">// &lt;-- foo的调用位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 当前调用栈是：baz --&gt; bar --&gt; foo</span></span><br><span class="line">    <span class="comment">// 因此，当前调用位置在bar中</span></span><br><span class="line">    </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="string">&quot;foo&quot;</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">baz</span>(); <span class="comment">// &lt;-- baz的调用位置</span></span><br></pre></td></tr></table></figure>
 
@@ -203,28 +212,41 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">　<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">x</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.<span class="property">x</span> = <span class="number">1</span>;</span><br><span class="line">obj.<span class="property">m</span> = test;</span><br><span class="line">obj.<span class="property">m</span>.<span class="title function_">apply</span>(obj) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/26/this%E5%AF%B9%E8%B1%A1/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -241,10 +263,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-元素水平垂直居中的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-元素水平垂直居中的方法"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -255,16 +277,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
+          
+            <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2022-03-26T07:00:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-26</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、采用定位-margin-auto"><a href="#一、采用定位-margin-auto" class="headerlink" title="一、采用定位+margin:auto"></a>一、采用定位+margin:auto</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.father</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">500px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">300px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">border</span>: <span class="number">1px</span> solid pink;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.son</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">80px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">background-color</span>: red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">right</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">margin</span>: auto;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、采用定位-margin-auto"><a href="#一、采用定位-margin-auto" class="headerlink" title="一、采用定位+margin:auto"></a>一、采用定位+margin:auto</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.father</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">500px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">300px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">border</span>: <span class="number">1px</span> solid pink;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.son</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">80px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">background-color</span>: red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">right</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">margin</span>: auto;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>通过将父级设置为相对定位，子级为绝对定位，且四个定位属性均设置为0，此时若子级未设置宽高，会被拉开到域父级一样大小，若此时为自己设置宽高，宽高会按照我们的设计进行显示，但实际上子级的虚拟占位已经撑满了整个父级，这时在给自己设置margin:auto，即可水平垂直居中。</p>
 <p>如图：</p>
@@ -297,28 +321,41 @@
 <h2 id="五、grid网格布局"><a href="#五、grid网格布局" class="headerlink" title="五、grid网格布局"></a>五、grid网格布局</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        .<span class="property">father</span> &#123;</span><br><span class="line">            <span class="attr">display</span>: grid;</span><br><span class="line">            justify-<span class="attr">content</span>: center;</span><br><span class="line">            align-<span class="attr">items</span>: center;</span><br><span class="line">            <span class="attr">width</span>: 500px;</span><br><span class="line">            <span class="attr">height</span>: 300px;</span><br><span class="line">            <span class="attr">border</span>: 1px solid pink;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">son</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 200px;</span><br><span class="line">            <span class="attr">height</span>: 80px;</span><br><span class="line">            background-<span class="attr">color</span>: red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CSS//" class="article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -335,10 +372,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-var、let、const区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-var、let、const区别"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -349,16 +386,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+          
+            <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/" class="archive-article-date">
   	<time datetime="2022-03-25T07:58:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p>在ES5中，声明变量只有 var和function两种形式，</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p>在ES5中，声明变量只有 var和function两种形式，</p>
 <h3 id="1-顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。"><a href="#1-顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。" class="headerlink" title="1.顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。"></a>1.顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">a</span>);  <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-使用-var-定义的变量存在变量提升的情况"><a href="#2-使用-var-定义的变量存在变量提升的情况" class="headerlink" title="2.使用 var 定义的变量存在变量提升的情况"></a>2.使用 var 定义的变量存在变量提升的情况</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
@@ -392,28 +431,41 @@
 
 <p>const 的作用域与let命令相同，只在声明所在的块级作用域内有效<br>const声明的变量也不存在变量提升，同样存在暂时性死区，只能在声明位置的后面使用<br>const声明的常量和let一样不可重复声明</p>
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/es6//" class="article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -430,10 +482,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-vue中如何解决跨域问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue中如何解决跨域问题"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -444,16 +496,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
+          
+            <a href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
   	<time datetime="2022-03-25T06:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、跨域的概念"><a href="#一、跨域的概念" class="headerlink" title="一、跨域的概念"></a>一、跨域的概念</h2><p>跨域本质上是浏览器基于同源策略的一种安全手段</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、跨域的概念"><a href="#一、跨域的概念" class="headerlink" title="一、跨域的概念"></a>一、跨域的概念</h2><p>跨域本质上是浏览器基于同源策略的一种安全手段</p>
 <p>同源策略，是一种约定，是浏览器最核心也最基本的安全性能，可以说Web是建立在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本与另一个域的内容进行交互。</p>
 <p>同源即满足以下条件：</p>
 <ul>
@@ -492,28 +546,41 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> frame = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">	frame.<span class="property">src</span> = <span class="string">&#x27;http://localhost:3000/article-listname=leo&amp;age=30&amp;callback=func&#x27;</span>;</span><br><span class="line">	$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">append</span>(frame);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 此为回调函数，其中res为后端返回的数据</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">res</span>)&#123;</span><br><span class="line">	<span class="title function_">alert</span>(res.<span class="property">message</span>+res.<span class="property">name</span>+<span class="string">&#x27;你已经&#x27;</span>+res.<span class="property">age</span>+<span class="string">&#x27;岁了&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/25/vue%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -530,10 +597,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-vue生命周期中created与mouted区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue生命周期中created与mouted区别"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -544,16 +611,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+          
+            <a href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/" class="archive-article-date">
   	<time datetime="2022-03-25T05:55:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、生命周期的概念"><a href="#一、生命周期的概念" class="headerlink" title="一、生命周期的概念"></a>一、生命周期的概念</h2><p>vue中实例或者组件从创建到销毁组件所经历的一系列过程</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、生命周期的概念"><a href="#一、生命周期的概念" class="headerlink" title="一、生命周期的概念"></a>一、生命周期的概念</h2><p>vue中实例或者组件从创建到销毁组件所经历的一系列过程</p>
 <p>即从创建、初始化数据、编译模板、挂载DOM&#x3D;&gt;渲染、更新&#x3D;&gt;渲染、卸载等一系列过程</p>
 <p>注意：在 Vue 生命周期钩子会自动绑定this上下文到实例中，因此我们可以访问数据，对Property和方法进行运算，但也意味着我们不能使用箭头函数来定义一个生命周期方法。</p>
 <h2 id="二、生命周期的具体内容"><a href="#二、生命周期的具体内容" class="headerlink" title="二、生命周期的具体内容"></a>二、生命周期的具体内容</h2><p>Vue生命周期具体可以分为八个阶段：创建前后，载入前后，更新前后，销毁前后，同时还包括一些特殊场景的生命周期。</p>
@@ -565,28 +634,41 @@
 <p>mounted：在模板渲染成html后调用，通常初始化页面完成后，再对DOM节点进行操作。</p>
 <p>二者都能调用实例对象的属性和方法，由于mounted期间DOM节点已经形成，因此数据请求放在mounted中可能会导致页面闪动，但若能在页面加载完成之前完成则不会出现这种情况。</p>
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/25/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%ADcreated%E4%B8%8Emouted%E5%8C%BA%E5%88%AB/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -603,10 +685,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-vue中的$nextTick的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue中的$nextTick的作用"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -617,16 +699,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/vue%E4%B8%AD%E7%9A%84$nextTick%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
+          
+            <a href="/2022/03/25/vue%E4%B8%AD%E7%9A%84$nextTick%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
   	<time datetime="2022-03-25T04:54:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>官方对 NextTick 的定义：<br>在下次DOM更新循环结束后执行延迟回调。在修改数据之后立即使用该方法，获取更新后的DOM。</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>官方对 NextTick 的定义：<br>在下次DOM更新循环结束后执行延迟回调。在修改数据之后立即使用该方法，获取更新后的DOM。</p>
 <p>简单理解：nextTick()，是将回调函数延迟在下一次dom更新数据后调用；即当数据更新后，在dom中渲染后，自动执行该函数。</p>
 <p>vue在更新DOM时异步执行的。当数据发生变化，vue将开启一个异步更新队列，视图需要等队列中所有数据变化之后，统一进行更新。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span>&gt;&#123;&#123;messsage&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">message</span>: <span class="string">&#x27;初始值&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
@@ -647,28 +731,41 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">created</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.$nextTick(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">ref1</span>.<span class="property">innerHTML</span>=<span class="string">&quot;created中修改了按钮内容&quot;</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/25/vue%E4%B8%AD%E7%9A%84$nextTick%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/25/vue%E4%B8%AD%E7%9A%84$nextTick%E7%9A%84%E4%BD%9C%E7%94%A8/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -685,10 +782,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-JavaScript中如何判断变量数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript中如何判断变量数据类型"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -699,16 +796,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/23/JavaScript%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+          
+            <a href="/2022/03/23/JavaScript%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
   	<time datetime="2022-03-23T06:41:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-23</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、typeof"><a href="#一、typeof" class="headerlink" title="一、typeof"></a>一、typeof</h2><p>typeof一般被用来判断一个变量的类型<br>可以判断number,string,boolean,undefined,function,symbol,object七种类型，在判断一些非object类型变量时，可以清除地告诉我们变量类型；但typeof在判断object类型变量时，仅仅返回object，而不能具体到哪一种object。</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、typeof"><a href="#一、typeof" class="headerlink" title="一、typeof"></a>一、typeof</h2><p>typeof一般被用来判断一个变量的类型<br>可以判断number,string,boolean,undefined,function,symbol,object七种类型，在判断一些非object类型变量时，可以清除地告诉我们变量类型；但typeof在判断object类型变量时，仅仅返回object，而不能具体到哪一种object。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;字符串&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> num=<span class="number">666</span>;</span><br><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> fn=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数&quot;</span>)&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">typeof</span>(str)  <span class="comment">//string</span></span><br><span class="line"><span class="title function_">typeof</span>(num)  <span class="comment">//number</span></span><br><span class="line"><span class="title function_">typeof</span>(fn)   <span class="comment">//function</span></span><br><span class="line"><span class="title function_">typeof</span>(obj)  <span class="comment">//object</span></span><br><span class="line"><span class="title function_">typeof</span>(arr)  <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="二、instancof"><a href="#二、instancof" class="headerlink" title="二、instancof"></a>二、instancof</h2><p>instanceof原理：用来判断一个构造函数的prototype属性是否在实例对象的原型链上</p>
@@ -735,28 +834,41 @@
 <p>每个类在内部都有一个 [[Class]] 属性，这个属性中就指定了上述字符串中的构造函数名。</p>
 <p>Object.prototype.toString 的原理是当调用的时候, 就取值内部的 [[Class]] 属性值, 然后拼接成 ‘[object ‘ + [[Class]] + ‘]’ 这样的字符串并返回. 然后我们使用 call 方法来获取任何值的数据类型.</p>
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/23/JavaScript%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/23/JavaScript%E4%B8%AD%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -773,10 +885,10 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-Vue组件间通信方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue组件间通信方式"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -787,16 +899,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/22/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+          
+            <a href="/2022/03/22/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" class="archive-article-date">
   	<time datetime="2022-03-22T03:37:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、组件间通信的概念"><a href="#一、组件间通信的概念" class="headerlink" title="一、组件间通信的概念"></a>一、组件间通信的概念</h2><p>首先，组件间通信可以拆分为以下两个概念：</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、组件间通信的概念"><a href="#一、组件间通信的概念" class="headerlink" title="一、组件间通信的概念"></a>一、组件间通信的概念</h2><p>首先，组件间通信可以拆分为以下两个概念：</p>
 <ul>
 <li>组件</li>
 <li>通信</li>
@@ -847,28 +961,41 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;child&#x27;</span>,&#123;</span><br><span class="line">        <span class="attr">inject</span>:[<span class="string">&#x27;for&#x27;</span>],<span class="comment">//得到父组件传递过来的数据</span></span><br><span class="line">        <span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                <span class="attr">mymessage</span>:<span class="variable language_">this</span>.<span class="property">for</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">template</span>:<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div&gt;</span></span><br><span class="line"><span class="string">                &lt;input type=&quot;text&quot; v-model=&quot;mymessage&quot;&gt; </span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">    Vue.component(&#x27;parent&#x27;,&#123;</span></span><br><span class="line"><span class="string">        template:`</span></span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>this is parent component!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">child</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        <span class="string">`,</span></span><br><span class="line"><span class="string">        provide:&#123;</span></span><br><span class="line"><span class="string">            for:&#x27;test&#x27;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        data()&#123;</span></span><br><span class="line"><span class="string">            return &#123;</span></span><br><span class="line"><span class="string">                message:&#x27;hello&#x27;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">    var app=new Vue(&#123;</span></span><br><span class="line"><span class="string">        el:&#x27;#app&#x27;,</span></span><br><span class="line"><span class="string">        template:`</span></span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">parent</span>&gt;</span><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span></span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        <span class="string">`</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/22/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/22/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -885,30 +1012,125 @@
 </aside>
 
 
-
-
+        
   
-    <article id="post-BFC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript中精度丢失的问题"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/21/BFC/">BFC</a>
+      <a class="article-title" href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/">JavaScript中精度丢失的问题</a>
     </h1>
   
 
-        
-        <a href="/2022/03/21/BFC/" class="archive-article-date">
-  	<time datetime="2022-03-21T07:26:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
+          
+            <a href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-03-21T06:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>BFC，即块级格式化上下文，是一个独立的渲染区域，规定了内部的Block Box 如何布局，旨在形成一个完全独立于外界的空间，让内部的子元素无法影响到外界的元素。<br>BFC有一套自己的渲染规则：</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="1、问题引入"><a href="#1、问题引入" class="headerlink" title="1、问题引入"></a>1、问题引入</h2><p>对于JavaScript中臭名昭著的bug：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>这其实是JS精度丢失产生的问题</p>
+<h2 id="2、分析原因"><a href="#2、分析原因" class="headerlink" title="2、分析原因"></a>2、分析原因</h2><p>浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的double双精度浮点数。</p>
+<p>0.1的二进制表示的是一个无线循环小数，所以无法存储在内存中，因此上述浮点数标准需要对这种无限循环的二进制进行截取，截取之后0.1变成了0.100…001，0.2变成了0.200…002，导致0.1+0.2&gt;0.3，最后输出false。</p>
+<h2 id="3、深入分析"><a href="#3、深入分析" class="headerlink" title="3、深入分析"></a>3、深入分析</h2><p>前面提到，Number采用的是IEEE754规范中64位双精度浮点数编码，长度为8个字节，64位，64位又可分为三个部分：</p>
+<ul>
+<li>符号位：第一位sign（0为正数，1为负数）</li>
+<li>指数位：1~12位，表示次数方，可以为正负数</li>
+<li>尾数位：最后的52位数</li>
+</ul>
+<p>例如：<br> 27.5转换为二进制11011.1,转换为科学计数法：1.10111 * 2^4,<br> 符号位为1；指数位为4+，即1027；尾数位位10111，补够52位即可。</p>
+<h2 id="4、解决方案"><a href="#4、解决方案" class="headerlink" title="4、解决方案"></a>4、解决方案</h2><p> 理论上我们很难利用有限的空间来存储无限的小数，但我们可以对数据进行处理，得到我们期望的结果。当我们拿到1.4000000000000001这样的浮点数时，可以采用toPrecision()方法凑整，在通过parseFloat转化成数字再显示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">strip</span>(<span class="params">num,precision=<span class="number">12</span></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> +(<span class="built_in">parseFloat</span>(num.<span class="title function_">toPrecision</span>(precision)));</span><br></pre></td></tr></table></figure>
+
+<p>对于运算类，可以将小数转换成整数再运算：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 精确加法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> num1Digits = (num1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> num2Digits = (num2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> baseNum = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(num1Digits, num2Digits));</span><br><span class="line">  <span class="keyword">return</span> (num1 * baseNum + num2 * baseNum) / baseNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                        
+                          
+
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
+    <article id="post-BFC"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/24/BFC/">BFC</a>
+    </h1>
+  
+
+          
+            <a href="/2022/02/24/BFC/" class="archive-article-date">
+  	<time datetime="2022-02-24T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
+</a>
+              
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>BFC，即块级格式化上下文，是一个独立的渲染区域，规定了内部的Block Box 如何布局，旨在形成一个完全独立于外界的空间，让内部的子元素无法影响到外界的元素。<br>BFC有一套自己的渲染规则：</p>
 <ul>
 <li>内部的盒子会在垂直方向上一个接一个的放置</li>
 <li>每个元素的左外边距与包含块的左边界相接触，包括浮动元素</li>
@@ -960,28 +1182,41 @@
 <p>页面如下：</p>
 <p><img src="https://s2.loli.net/2022/03/22/Oh7Wr6nvXJzqLAj.jpg" alt="自定义两栏布局2.jpg"></p>
 
-      
+                        
+                          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CSS//" class="article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/21/BFC/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/02/24/BFC/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -998,87 +1233,12 @@
 </aside>
 
 
-
-
-  
-    <article id="post-JavaScript中精度丢失的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/">JavaScript中精度丢失的问题</a>
-    </h1>
   
-
-        
-        <a href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2022-03-21T06:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、问题引入"><a href="#1、问题引入" class="headerlink" title="1、问题引入"></a>1、问题引入</h2><p>对于JavaScript中臭名昭著的bug：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>这其实是JS精度丢失产生的问题</p>
-<h2 id="2、分析原因"><a href="#2、分析原因" class="headerlink" title="2、分析原因"></a>2、分析原因</h2><p>浮点数是一种表示数字的标准，在JavaScript中，主流的数值类型是Number，Number采用的是IEEE754规范中64位双精度浮点数编码（优点：可以归一化处理整数和小数，节省存储空间），该标准使用64位固定长度表示，即标准的double双精度浮点数。</p>
-<p>0.1的二进制表示的是一个无线循环小数，所以无法存储在内存中，因此上述浮点数标准需要对这种无限循环的二进制进行截取，截取之后0.1变成了0.100…001，0.2变成了0.200…002，导致0.1+0.2&gt;0.3，最后输出false。</p>
-<h2 id="3、深入分析"><a href="#3、深入分析" class="headerlink" title="3、深入分析"></a>3、深入分析</h2><p>前面提到，Number采用的是IEEE754规范中64位双精度浮点数编码，长度为8个字节，64位，64位又可分为三个部分：</p>
-<ul>
-<li>符号位：第一位sign（0为正数，1为负数）</li>
-<li>指数位：1~12位，表示次数方，可以为正负数</li>
-<li>尾数位：最后的52位数</li>
-</ul>
-<p>例如：<br> 27.5转换为二进制11011.1,转换为科学计数法：1.10111 * 2^4,<br> 符号位为1；指数位为4+，即1027；尾数位位10111，补够52位即可。</p>
-<h2 id="4、解决方案"><a href="#4、解决方案" class="headerlink" title="4、解决方案"></a>4、解决方案</h2><p> 理论上我们很难利用有限的空间来存储无限的小数，但我们可以对数据进行处理，得到我们期望的结果。当我们拿到1.4000000000000001这样的浮点数时，可以采用toPrecision()方法凑整，在通过parseFloat转化成数字再显示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">strip</span>(<span class="params">num,precision=<span class="number">12</span></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> +(<span class="built_in">parseFloat</span>(num.<span class="title function_">toPrecision</span>(precision)));</span><br></pre></td></tr></table></figure>
-
-<p>对于运算类，可以将小数转换成整数再运算：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 精确加法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> num1Digits = (num1.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> num2Digits = (num2.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>).<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> baseNum = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">10</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(num1Digits, num2Digits));</span><br><span class="line">  <span class="keyword">return</span> (num1 * baseNum + num2 * baseNum) / baseNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 

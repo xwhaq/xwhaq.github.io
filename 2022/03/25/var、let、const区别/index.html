@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、var在ES5中，声明变量只有 var和function两种形式， 1.顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。12var a&#x3D;10;console.log(window.a);  &#x2F;&#x2F;10  2.使用 var 定义的变量存在变量提升的情况12console.log(a); &#x2F;&#x2F;undefinedvar a&#x3D;10;  编译阶段，编译器会将以上代码变成以下执行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-25T07:58:59.000Z">
-<meta property="article:modified_time" content="2022-03-26T06:53:42.903Z">
+<meta property="article:modified_time" content="2022-04-22T06:36:13.063Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -154,7 +160,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-var、let、const区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-var、let、const区别"
+  class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -165,16 +172,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+          
+            <a href="/2022/03/25/var%E3%80%81let%E3%80%81const%E5%8C%BA%E5%88%AB/" class="archive-article-date">
   	<time datetime="2022-03-25T07:58:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p>在ES5中，声明变量只有 var和function两种形式，</p>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p>在ES5中，声明变量只有 var和function两种形式，</p>
 <h3 id="1-顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。"><a href="#1-顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。" class="headerlink" title="1.顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。"></a>1.顶层对象的属性和全局变量是等价的，var声明的变量既是全局变量也是顶层变量。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">a</span>);  <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-使用-var-定义的变量存在变量提升的情况"><a href="#2-使用-var-定义的变量存在变量提升的情况" class="headerlink" title="2.使用 var 定义的变量存在变量提升的情况"></a>2.使用 var 定义的变量存在变量提升的情况</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
@@ -208,45 +217,30 @@
 
 <p>const 的作用域与let命令相同，只在声明所在的块级作用域内有效<br>const声明的变量也不存在变量提升，同样存在暂时性死区，只能在声明位置的后面使用<br>const声明的常量和let一样不可重复声明</p>
 
-      
+                        
+                          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/es6//" class="article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
+                  
+
+                      
+                        
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -296,9 +290,9 @@
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
@@ -322,8 +316,8 @@
   
 </nav>
 
-
-<aside class="wrap-side-operation">
+    
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -340,18 +334,17 @@
 </aside>
 
 
+        
+          
 
-  
-  
-  
+                
 
-  
+                      
 
-  
+                            
 
-  
-
-
+                                
+                                      
           </div>
         </div>
       </div>

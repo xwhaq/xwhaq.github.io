@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/03/26/qdUYZBcfOVDijm3.jpg">
 <meta property="og:image" content="https://s2.loli.net/2022/03/26/qdUYZBcfOVDijm3.jpg">
 <meta property="article:published_time" content="2022-03-26T07:00:13.000Z">
-<meta property="article:modified_time" content="2022-03-26T07:39:48.155Z">
+<meta property="article:modified_time" content="2022-04-22T06:37:44.053Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2022/03/26/qdUYZBcfOVDijm3.jpg">
@@ -63,6 +63,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -120,6 +122,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -137,12 +141,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -157,7 +163,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-元素水平垂直居中的方法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-元素水平垂直居中的方法"
+  class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -168,16 +175,18 @@
     </h1>
   
 
-        
-        <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
+          
+            <a href="/2022/03/26/%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2022-03-26T07:00:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-26</time>
 </a>
-        
+              
       </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、采用定位-margin-auto"><a href="#一、采用定位-margin-auto" class="headerlink" title="一、采用定位+margin:auto"></a>一、采用定位+margin:auto</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.father</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">500px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">300px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">border</span>: <span class="number">1px</span> solid pink;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.son</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">80px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">background-color</span>: red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">right</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">margin</span>: auto;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、采用定位-margin-auto"><a href="#一、采用定位-margin-auto" class="headerlink" title="一、采用定位+margin:auto"></a>一、采用定位+margin:auto</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.father</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">500px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">300px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">border</span>: <span class="number">1px</span> solid pink;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-class">.son</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">height</span>: <span class="number">80px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">background-color</span>: red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">right</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">margin</span>: auto;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>通过将父级设置为相对定位，子级为绝对定位，且四个定位属性均设置为0，此时若子级未设置宽高，会被拉开到域父级一样大小，若此时为自己设置宽高，宽高会按照我们的设计进行显示，但实际上子级的虚拟占位已经撑满了整个父级，这时在给自己设置margin:auto，即可水平垂直居中。</p>
 <p>如图：</p>
@@ -210,45 +219,30 @@
 <h2 id="五、grid网格布局"><a href="#五、grid网格布局" class="headerlink" title="五、grid网格布局"></a>五、grid网格布局</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        .<span class="property">father</span> &#123;</span><br><span class="line">            <span class="attr">display</span>: grid;</span><br><span class="line">            justify-<span class="attr">content</span>: center;</span><br><span class="line">            align-<span class="attr">items</span>: center;</span><br><span class="line">            <span class="attr">width</span>: 500px;</span><br><span class="line">            <span class="attr">height</span>: 300px;</span><br><span class="line">            <span class="attr">border</span>: 1px solid pink;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">son</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 200px;</span><br><span class="line">            <span class="attr">height</span>: 80px;</span><br><span class="line">            background-<span class="attr">color</span>: red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
 
-      
+                        
+                          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CSS//" class="article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
+                  
+
+                      
+                        
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -298,9 +292,9 @@
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
 
@@ -324,8 +318,8 @@
   
 </nav>
 
-
-<aside class="wrap-side-operation">
+    
+      <aside class="wrap-side-operation">
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
@@ -342,18 +336,17 @@
 </aside>
 
 
+        
+          
 
-  
-  
-  
+                
 
-  
+                      
 
-  
+                            
 
-  
-
-
+                                
+                                      
           </div>
         </div>
       </div>
