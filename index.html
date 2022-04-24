@@ -158,6 +158,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-正则表达式"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+    </h1>
+  
+
+          
+            <a href="/2022/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-04-24T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-24</time>
+</a>
+              
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="一、正则表达式字符匹配"><a href="#一、正则表达式字符匹配" class="headerlink" title="一、正则表达式字符匹配"></a>一、正则表达式字符匹配</h2><h3 id="1、模糊匹配"><a href="#1、模糊匹配" class="headerlink" title="1、模糊匹配"></a>1、模糊匹配</h3><h4 id="①横向模糊匹配"><a href="#①横向模糊匹配" class="headerlink" title="①横向模糊匹配"></a>①横向模糊匹配</h4><p>一个可匹配的字符串的长度是不固定的，可以有多种情况</p>
+<p>实现方式：量词。如{m,n}，表示连续出现最少m次，最多n次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex= <span class="regexp">/ab&#123;2,5&#125;c/g</span>;</span><br><span class="line"><span class="keyword">var</span> string=<span class="string">&quot;abc abbc abbbc abbbbc abbbbbc abbbbbbbc&quot;</span>;</span><br><span class="line"></span><br><span class="line">string.<span class="title function_">match</span>(regex);</span><br><span class="line"><span class="comment">//=&gt;[&quot;abbc&quot;,&quot;abbbc&quot;,&quot;abbbbc&quot;,&quot;abbbbbc&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注：案例中的 &#x2F;g 表示全局匹配，即在目标字符串中按顺序找到满足条件的所有子串。</p>
+<h4 id="②纵向模糊匹配"><a href="#②纵向模糊匹配" class="headerlink" title="②纵向模糊匹配"></a>②纵向模糊匹配</h4><p>一个正则匹配的字符串，具体到某一位字符时，可以是某个不确定的字符，可以有多种可能。</p>
+<p>实现方式：使用字符组。如 [abc] 表示该字符可以是字符 “a”,”b”,”c” 中的任意一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/a[123]b/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;a0b a1b a2b a3b a4b&quot;</span>;</span><br><span class="line"></span><br><span class="line">string.<span class="title function_">match</span>(regex)</span><br><span class="line"><span class="comment">//=&gt;[&quot;a1b&quot;,&quot;a2b&quot;,&quot;a3b&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、字符组"><a href="#2、字符组" class="headerlink" title="2、字符组"></a>2、字符组</h3><p>注意：仅表示其中一个字符，如 [abc] 表示该字符可以是字符 “a”,”b”,”c” 中的任意一个</p>
+<h4 id="①范围表示法"><a href="#①范围表示法" class="headerlink" title="①范围表示法"></a>①范围表示法</h4><p>字符组中的字符非常多时，可以使用范围表示法</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//[12345abcdefGHIJKL] 可以简写为 [1-5a-fG-L]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：连字符具有特殊用途，因此当我们需要匹配 “a”、”-“、”z”中任意一个字符时，</p>
+<p>可以写成：[-az]、[az-]、[a\-z]</p>
+<h4 id="②排除字符组"><a href="#②排除字符组" class="headerlink" title="②排除字符组"></a>②排除字符组</h4><p>某位字符组可以是任意匹配字符以外的东西</p>
+<p>字符组首位放置^脱字符，表示求反</p>
+<p>[^abc] 表示除”a”、”b”、”c”之外的任意一个字符</p>
+<h4 id="③常见的简写形式"><a href="#③常见的简写形式" class="headerlink" title="③常见的简写形式"></a>③常见的简写形式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\d [<span class="number">0</span>-<span class="number">9</span>]                表示一位数字</span><br><span class="line">\D [^<span class="number">0</span>-<span class="number">9</span>]               表示除数字外的任意字符</span><br><span class="line">\w [<span class="number">0</span>-9a-zA-Z]          表示数字、大小写字母和下划线</span><br><span class="line">\W [^<span class="number">0</span>-9a-zA-Z]         表示非单词字符</span><br><span class="line">\s [ \t\v\b\r\f]        表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符。</span><br><span class="line">\S [^ \t\v\b\r\f]       表示非空白符。</span><br><span class="line">.  [^\n\r\u2028\u2029]  表示通配符，表示几乎任意字符。换行符、回车符、行分隔符和段分隔符除外。</span><br></pre></td></tr></table></figure>
+
+<p>匹配任意字符：[\d\D]、[\w\W]、[\s\S]和[^]</p>
+<h3 id="3、量词"><a href="#3、量词" class="headerlink" title="3、量词"></a>3、量词</h3><p>也称重复</p>
+<h4 id="①简写形式"><a href="#①简写形式" class="headerlink" title="①简写形式"></a>①简写形式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;m,&#125; 表示至少出现m次。</span><br><span class="line"></span><br><span class="line">&#123;m&#125; 等价于&#123;m,m&#125;，表示出现m次。</span><br><span class="line"></span><br><span class="line">? 等价于&#123;<span class="number">0</span>,<span class="number">1</span>&#125;，表示出现或者不出现。</span><br><span class="line"></span><br><span class="line">+ 等价于&#123;<span class="number">1</span>,&#125;，表示出现至少一次。</span><br><span class="line"></span><br><span class="line">* 等价于&#123;<span class="number">0</span>,&#125;，表示出现任意次，有可能不出现。</span><br></pre></td></tr></table></figure>
+
+<h4 id="②贪婪匹配及惰性匹配"><a href="#②贪婪匹配及惰性匹配" class="headerlink" title="②贪婪匹配及惰性匹配"></a>②贪婪匹配及惰性匹配</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d&#123;2,5&#125;/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;123 1234 12345 123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">string.<span class="title function_">match</span>(regex);</span><br><span class="line"><span class="comment">// =&gt; [&quot;123&quot;, &quot;1234&quot;, &quot;12345&quot;, &quot;12345&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>其中正则&#x2F;\d{2,5}&#x2F;，表示数字连续出现2到5次。会匹配2位、3位、4位、5位连续数字。</p>
+<p>但是其是贪婪的，它会尽可能多的匹配。你能给我6个，我就要5个。你能给我3个，我就3要个。反正只要在能力范围内，越多越好。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d&#123;2,5&#125;?/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;123 1234 12345 123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">string.<span class="title function_">match</span>(regex);</span><br><span class="line"><span class="comment">// =&gt; [&quot;12&quot;, &quot;12&quot; ,&quot;34&quot; ,&quot;12&quot;, &quot;34&quot;, &quot;12&quot; ,&quot;34&quot; ,&quot;56&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="③多选分支"><a href="#③多选分支" class="headerlink" title="③多选分支"></a>③多选分支</h4><p>一个模式可以实现横向和纵向模糊匹配。而多选分支可以支持多个子模式任选其一。</p>
+<p>具体形式如下：(p1|p2|p3)，其中p1、p2和p3是子模式，用 |（管道符）分隔，表示其中任何之一。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/good|nice/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;good idea, nice try.&quot;</span>;</span><br><span class="line"> </span><br><span class="line">string.<span class="title function_">match</span>(regex);</span><br><span class="line"><span class="comment">// =&gt; [&quot;good&quot;, &quot;nice&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：分支结构是惰性的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/goodbye|good/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;goodbye&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( string.<span class="title function_">match</span>(regex) );</span><br><span class="line"><span class="comment">// =&gt; [&quot;goodbye&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、正则表达式的位置匹配"><a href="#二、正则表达式的位置匹配" class="headerlink" title="二、正则表达式的位置匹配"></a>二、正则表达式的位置匹配</h2><h3 id="1、位置"><a href="#1、位置" class="headerlink" title="1、位置"></a>1、位置</h3><p>位置是相邻字符之间的位置，如图：</p>
+<p><img src="https://s2.loli.net/2022/04/24/gShbeXUCRf6nluw.jpg" alt="正则.jpg"></p>
+<h3 id="2、匹配位置锚字符"><a href="#2、匹配位置锚字符" class="headerlink" title="2、匹配位置锚字符"></a>2、匹配位置锚字符</h3><h4 id="①-和"><a href="#①-和" class="headerlink" title="① ^ 和 $"></a>① ^ 和 $</h4><p>^（脱字符）匹配开头，在多行匹配中匹配行开头。</p>
+<p>$（美元符号）匹配结尾，在多行匹配中匹配行结尾</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;hello&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/^|$/g</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">// =&gt; &quot;#hello#&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//多行匹配模式时，二者是行的概念</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;I\nlove\njavascript&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/^|$/gm</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">#I#</span></span><br><span class="line"><span class="comment">#love#</span></span><br><span class="line"><span class="comment">#javascript#</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="②-b-和-B"><a href="#②-b-和-B" class="headerlink" title="② \b 和 \B"></a>② \b 和 \B</h4><p>\b是单词边界，具体就是\w和\W之间的位置，也包括\w和^之间的位置，也包括\w和$之间的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;[JS] Lesson_01.mp4&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/\b/g</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">// =&gt; &quot;[#JS#] #Lesson_01#.#mp4#&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>\B是非单词边界。例如在字符串中所有位置中，除去\b，剩下的都是\B。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;[JS] Lesson_01.mp4&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/\B/g</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">// =&gt; &quot;#[J#S]# L#e#s#s#o#n#_#0#1.m#p#4&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="③-x3D-p-和-p"><a href="#③-x3D-p-和-p" class="headerlink" title="③(?&#x3D;p)和(?!p)"></a>③(?&#x3D;p)和(?!p)</h4><p>（?&#x3D;p) 即p前面的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;hello&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/(?=l)/g</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">// =&gt; &quot;he#l#lo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p> (?!p) 即非p前面的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">&quot;hello&quot;</span>.<span class="title function_">replace</span>(<span class="regexp">/(?!l)/g</span>, <span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">// =&gt; &quot;#h#ell#o#&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+                        
+                          
+
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
     <article id="post-this对象"
   class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1077,134 +1212,6 @@
                   
                     <p class="article-more-link">
                       <a class="article-more-a" href="/2022/03/21/JavaScript%E4%B8%AD%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        展开全文 >>
-                      </a>
-                    </p>
-                    
-
-                      
-                            <div class="clearfix"></div>
-        </div>
-  </div>
-</article>
-
-      <aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-        
-  
-    <article id="post-BFC"
-  class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/24/BFC/">BFC</a>
-    </h1>
-  
-
-          
-            <a href="/2022/02/24/BFC/" class="archive-article-date">
-  	<time datetime="2022-02-24T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
-</a>
-              
-      </header>
-      
-        <div class="article-entry" itemprop="articleBody">
-          
-
-                
-                      <h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>BFC，即块级格式化上下文，是一个独立的渲染区域，规定了内部的Block Box 如何布局，旨在形成一个完全独立于外界的空间，让内部的子元素无法影响到外界的元素。<br>BFC有一套自己的渲染规则：</p>
-<ul>
-<li>内部的盒子会在垂直方向上一个接一个的放置</li>
-<li>每个元素的左外边距与包含块的左边界相接触，包括浮动元素</li>
-<li>BFC的区域不会与float的元素区域重叠</li>
-<li>计算BFC的高度时，浮动子元素也参与运算</li>
-<li>页面上的一个独立的隔离容器，容器内的子元素不会影响到外界元素</li>
-</ul>
-<h2 id="2、触发条件"><a href="#2、触发条件" class="headerlink" title="2、触发条件"></a>2、触发条件</h2><ol>
-<li>根元素(html)</li>
-<li>浮动元素，float&#x3D;left&#x2F;right</li>
-<li>overflow: hidden,scroll,auto</li>
-<li>position值为absolute&#x2F;fixed</li>
-<li>display的值是inline-block&#x2F;table-cell&#x2F;flex&#x2F;table-caption&#x2F;inline-flex</li>
-</ol>
-<h2 id="3、BFC的应用场景"><a href="#3、BFC的应用场景" class="headerlink" title="3、BFC的应用场景"></a>3、BFC的应用场景</h2><h3 id="（1）margin-高度塌陷"><a href="#（1）margin-高度塌陷" class="headerlink" title="（1）margin 高度塌陷"></a>（1）margin 高度塌陷</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            <span class="attr">margin</span>: <span class="number">0</span>;</span><br><span class="line">            <span class="attr">padding</span>: <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">one</span>,</span><br><span class="line">        .<span class="property">two</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 200px;</span><br><span class="line">            <span class="attr">height</span>: 200px;</span><br><span class="line">            background-<span class="attr">color</span>: pink;</span><br><span class="line">            <span class="attr">margin</span>: 100px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<img src="https://s2.loli.net/2022/03/22/rW6vJTNAe4Dszmq.jpg" alt="margin高度塌陷.jpg" style="zoom:50%;" />
-
-<p>如上图，两个盒子的外边距均为100px，但二者实际距离也为100px，原因是两个相邻的box的margin会发生重叠，以最大的margin为标准</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">            <span class="attr">margin</span>: <span class="number">0</span>;</span><br><span class="line">            <span class="attr">padding</span>: <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">sub</span> &#123;</span><br><span class="line">            <span class="attr">overflow</span>: hidden;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">one</span>,</span><br><span class="line">        .<span class="property">two</span> &#123;</span><br><span class="line">            <span class="comment">/* overflow: hidden; */</span></span><br><span class="line">            <span class="attr">width</span>: 200px;</span><br><span class="line">            <span class="attr">height</span>: 200px;</span><br><span class="line">            background-<span class="attr">color</span>: pink;</span><br><span class="line">            <span class="attr">margin</span>: 100px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sub&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<img src="https://s2.loli.net/2022/03/22/LlGNDmhwpigQAZF.jpg" alt="margin高度未塌陷.jpg" style="zoom:50%;" />
-
-<p>我们添加一个外部盒子触发BFC，两个盒子的距离即变成200px</p>
-<h3 id="（2）清楚内浮动"><a href="#（2）清楚内浮动" class="headerlink" title="（2）清楚内浮动"></a>（2）清楚内浮动</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        .<span class="property">container</span> &#123;</span><br><span class="line">            <span class="attr">border</span>: 5px solid blue;</span><br><span class="line">            <span class="attr">width</span>: 300px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">one</span>,</span><br><span class="line">        .<span class="property">two</span> &#123;</span><br><span class="line">            <span class="attr">border</span>: 5px solid pink;</span><br><span class="line">            <span class="attr">width</span>: 100px;</span><br><span class="line">            <span class="attr">height</span>: 100px;</span><br><span class="line">            <span class="attr">float</span>: left;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>页面如下：</p>
-<p><img src="https://s2.loli.net/2022/03/22/EiNCoDfwnZFXJyH.jpg" alt="内浮动.jpg"></p>
-<p>我们知道BFC在计算高度时，内部浮动元素也会计算在其中，所以我们可以使外部container触发BFC，则此时浮动元素高度也会计算在其中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">        .<span class="property">container</span> &#123;</span><br><span class="line">            <span class="attr">overflow</span>: hidden;</span><br><span class="line">            <span class="attr">border</span>: 5px solid blue;</span><br><span class="line">            <span class="attr">width</span>: 300px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">one</span>,</span><br><span class="line">        .<span class="property">two</span> &#123;</span><br><span class="line">            <span class="attr">border</span>: 5px solid pink;</span><br><span class="line">            <span class="attr">width</span>: 100px;</span><br><span class="line">            <span class="attr">height</span>: 100px;</span><br><span class="line">            <span class="attr">float</span>: left;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>页面展示如下：</p>
-<p><img src="https://s2.loli.net/2022/03/22/8qrg57h6Pdz4AZV.jpg" alt="清除内浮动.jpg"></p>
-<h3 id="（3）自适应多栏布局"><a href="#（3）自适应多栏布局" class="headerlink" title="（3）自适应多栏布局"></a>（3）自适应多栏布局</h3><p>如下为一两栏布局：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">aside</span> &#123;</span><br><span class="line">            <span class="attr">float</span>: left;</span><br><span class="line">            <span class="attr">width</span>: 100px;</span><br><span class="line">            <span class="attr">height</span>: 100px;</span><br><span class="line">            background-<span class="attr">color</span>: pink;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .<span class="property">main</span> &#123;</span><br><span class="line">            <span class="attr">width</span>: 200px;</span><br><span class="line">            <span class="attr">height</span>: 200px;</span><br><span class="line">            background-<span class="attr">color</span>: red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;aside&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>页面如下：</p>
-<p><img src="https://s2.loli.net/2022/03/22/Zo4ULJwKsRuiPST.jpg" alt="自定义多栏布局1.jpg"></p>
-<p>.aside为浮动元素，.main的左外边距会与包含块的左侧接触，</p>
-<p>而BFC的区域不会与浮动盒子相重叠，我们可以使.main触发BFC，</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">main</span>&#123;</span><br><span class="line">    <span class="attr">overflow</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>页面如下：</p>
-<p><img src="https://s2.loli.net/2022/03/22/Oh7Wr6nvXJzqLAj.jpg" alt="自定义两栏布局2.jpg"></p>
-
-                        
-                          
-
-        </div>
-        <div class="article-info article-info-index">
-          
-              
-                
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CSS//" class="article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-                  
-                    <p class="article-more-link">
-                      <a class="article-more-a" href="/2022/02/24/BFC/">
                         展开全文 >>
                       </a>
                     </p>
