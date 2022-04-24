@@ -323,6 +323,90 @@
 
         
   
+    <article id="post-合并有序链表"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/24/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">合并有序链表</a>
+    </h1>
+  
+
+          
+            <a href="/2022/02/24/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2022-02-24T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
+</a>
+              
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+
+                
+                      <h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<img src="https://s2.loli.net/2022/04/22/FGWUwjCEnBeSsX3.png" alt="屏幕截图 2022-04-22 170012.png" style="zoom:50%;" />
+
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">ListNode</span>&#125; <span class="variable">list1</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">ListNode</span>&#125; <span class="variable">list2</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">ListNode</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="keyword">function</span>(<span class="params">list1, list2</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(list1===<span class="literal">null</span>) <span class="keyword">return</span> list2;</span><br><span class="line">    <span class="keyword">if</span>(list2===<span class="literal">null</span>) <span class="keyword">return</span> list1;</span><br><span class="line">    <span class="keyword">if</span>(list1.<span class="property">val</span>&lt;list2.<span class="property">val</span>)&#123;</span><br><span class="line">        list1.<span class="property">next</span>=<span class="title function_">mergeTwoLists</span>(list1.<span class="property">next</span>,list2);</span><br><span class="line">        <span class="keyword">return</span> list1;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        list2.<span class="property">next</span>=<span class="title function_">mergeTwoLists</span>(list1,list2.<span class="property">next</span>);</span><br><span class="line">        <span class="keyword">return</span> list2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+                        
+                          
+
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2022/02/24/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
