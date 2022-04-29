@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/4 | Hexo</title>
+  <title>Vuex | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/04/index.html">
+  <meta name="description" content="1、VUEX概述1.1 定义Vuex是实现组件全局状态（数据）的一种机制，可以方便的实现组件之间数据的共享 1.2 使用Vuex统一管理状态的好处① 可以在vuex中集中管理共享的数据，易于开发和后期维护 ② 可以高效地实现组件之间的数据共享，提高开发效率 ③ 存储在vuex中数据均为响应式的，可以实时保持数据与页面的同步 1.3存储在vuex中数据特点一般情况下，只有组件之间共享的数据，才有必要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex">
+<meta property="og:url" content="http://example.com/2022/04/29/vuex/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、VUEX概述1.1 定义Vuex是实现组件全局状态（数据）的一种机制，可以方便的实现组件之间数据的共享 1.2 使用Vuex统一管理状态的好处① 可以在vuex中集中管理共享的数据，易于开发和后期维护 ② 可以高效地实现组件之间的数据共享，提高开发效率 ③ 存储在vuex中数据均为响应式的，可以实时保持数据与页面的同步 1.3存储在vuex中数据特点一般情况下，只有组件之间共享的数据，才有必要">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-29T03:35:24.000Z">
+<meta property="article:modified_time" content="2022-04-29T07:32:33.689Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -156,37 +160,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vuex"
+  class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/29/vuex/" class="archive-article-date">
-  	<time datetime="2022-04-29T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/29/vuex/">Vuex</a>
+    <h1 class="article-title" itemprop="name">
+      Vuex
     </h1>
   
 
-        <div class="article-info info-on-right">
           
+            <a href="/2022/04/29/vuex/" class="archive-article-date">
+  	<time datetime="2022-04-29T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-29</time>
+</a>
+              
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
           
+
+                
+                      <h2 id="1、VUEX概述"><a href="#1、VUEX概述" class="headerlink" title="1、VUEX概述"></a>1、VUEX概述</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>Vuex是实现组件全局状态（数据）的一种机制，可以方便的实现组件之间数据的共享</p>
+<h3 id="1-2-使用Vuex统一管理状态的好处"><a href="#1-2-使用Vuex统一管理状态的好处" class="headerlink" title="1.2 使用Vuex统一管理状态的好处"></a>1.2 使用Vuex统一管理状态的好处</h3><p>① 可以在vuex中集中管理共享的数据，易于开发和后期维护</p>
+<p>② 可以高效地实现组件之间的数据共享，提高开发效率</p>
+<p>③ 存储在vuex中数据均为响应式的，可以实时保持数据与页面的同步</p>
+<h3 id="1-3存储在vuex中数据特点"><a href="#1-3存储在vuex中数据特点" class="headerlink" title="1.3存储在vuex中数据特点"></a>1.3存储在vuex中数据特点</h3><p>一般情况下，只有组件之间共享的数据，才有必要存储到vuex中；对于组件的私有数据，依旧存储在data中即可。</p>
+<h2 id="2、VUEX的核心概念"><a href="#2、VUEX的核心概念" class="headerlink" title="2、VUEX的核心概念"></a>2、VUEX的核心概念</h2><h3 id="2-1-state"><a href="#2-1-state" class="headerlink" title="2.1 state"></a>2.1 state</h3><p>state 提供唯一的公共数据源，所有共享的数据都要统一放在store的state中进行存储</p>
+<p>组件中访问state的数据的方式如下：</p>
+<p>1、this.$store.state.全局数据名称</p>
+<p>2、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、从vuex中按需导入mapState函数</span></span><br><span class="line"><span class="keyword">import</span> &#123;mapState&#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//2、通过mapState函数将当前组件需要的全局数据，映射为当前组件的computed计算属性</span></span><br><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">    ...<span class="title function_">mapState</span>([<span class="string">&#x27;count&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Mutation"><a href="#2-2-Mutation" class="headerlink" title="2.2 Mutation"></a>2.2 Mutation</h3><p>Mutation 用于变更 Store 中的数据</p>
+<p>①  只能通过 mutation 变更 Store 数据，不可以直接操作 Store 中的数据</p>
+<p>② 使用mutations 可以集中监控所有数据的变化</p>
+<p>组件中触发Mutation的方式如下：</p>
+<p>1、this.Store.commit()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义 Mutation</span></span><br><span class="line"><span class="attr">mutations</span>:&#123;</span><br><span class="line">    <span class="title function_">addStep</span>(<span class="params">state,step</span>)&#123;</span><br><span class="line">        <span class="comment">//变更状态</span></span><br><span class="line">        state.<span class="property">count</span>+=step</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//触发 Mutation</span></span><br><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    <span class="title function_">handle</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="comment">//触发 mutations 第一种方式</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">commit</span>(<span class="string">&#x27;add&#x27;</span>,<span class="number">3</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、从vuex中按需导入mapMutations函数</span></span><br><span class="line"><span class="keyword">import</span> &#123;mapMutations&#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//2、将指定的mutations函数映射为当前组件的methods方法</span></span><br><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    ...<span class="title function_">mapMutations</span>([<span class="string">&#x27;add&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：不要在Mutations中，执行异步操作</p>
+<h3 id="2-3-Action"><a href="#2-3-Action" class="headerlink" title="2.3 Action"></a>2.3 Action</h3><p>Action 用于处理异步任务</p>
+<p>如果通过异步操作变更数据，必须通过 Action ,而不能使用 Mutation ,但是在 Action 中还是需要通过触发 Mutation 的方式间接变更数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义Action</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="comment">//...省略其他代码</span></span><br><span class="line">    <span class="attr">mutations</span>: &#123;</span><br><span class="line">        <span class="title function_">add</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">count</span>++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;</span><br><span class="line">        <span class="title function_">addAsync</span>(<span class="params">context，step</span>)&#123;</span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">                <span class="comment">//在 actions 中，不能直接修改 state 中的数据；</span></span><br><span class="line">                <span class="comment">//必须通过 cntext.commit()触发 mutation</span></span><br><span class="line">                context.<span class="title function_">commit</span>(<span class="string">&#x27;addStep&#x27;</span>,step)</span><br><span class="line">            &#125;,<span class="number">1000</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>触发 actions 的方式：</p>
+<p>1、this.$store.dispatch(‘addAsync’)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    <span class="title function_">handle</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">dispatch</span>(<span class="string">&#x27;addAsync&#x27;</span>,<span class="number">5</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、从 vuex 中按需导入 mapActions 函数</span></span><br><span class="line"><span class="keyword">import</span> &#123;mapActions&#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//2、将指定的actions函数，映射为当前的methods函数</span></span><br><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    ...<span class="title function_">mapActions</span>([<span class="string">&#x27;addAsync&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、Getter"><a href="#4、Getter" class="headerlink" title="4、Getter"></a>4、Getter</h3><p>Getter用于对 Store 中的数据进行加工处理形成新的数据</p>
+<p>① Getter 可以对 Store 中已有的数据加工处理之后形成新的数据，类似Vue中的computed</p>
+<p>② 响应式数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store =<span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>:&#123;</span><br><span class="line">        <span class="attr">count</span>:<span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">getters</span>:&#123;</span><br><span class="line">        <span class="attr">showNum</span>: <span class="function"><span class="params">state</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;当前最新的数量是【&#x27;</span>+state.<span class="property">count</span> +<span class="string">&#x27;】&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用getters的方式：</p>
+<p>1、this.$store.getters.showNum</p>
+<p>2、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapGetters&#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">    ...<span class="title function_">mapGetters</span>([<span class="string">&#x27;showNum&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                        
+                          
+
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+                
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -199,78 +247,105 @@
 	</div>
 
 
+                  
+
+                      
+                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/29/vuex/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                          
+                            <div class="clearfix"></div>
+        </div>
   </div>
 </article>
+
   
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/28/currentStyle%E4%B8%8EgetComputedStyle()/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/28/currentStyle%E4%B8%8EgetComputedStyle()/" class="archive-article-date">
-  	<time datetime="2022-04-28T00:25:03.994Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
-</a>
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-        <div class="article-info info-on-right">
+        
+        
+    </div>
+</aside>
+
+
+        
           
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-04-24T03:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/24/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
-  
+                
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/javascript//" class="article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
+                      
 
+                            
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
-
+                                
+                                      
           </div>
         </div>
       </div>
@@ -291,8 +366,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
